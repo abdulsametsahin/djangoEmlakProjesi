@@ -1,0 +1,12 @@
+{% extends 'homebase.html' %}
+
+{% block title %} Ana Sayfa | {{ setting.title}}{% endblock %}
+{% block description %}  {% endblock %}
+{% block keywords %} {% endblock %}
+
+{% block head %}
+<link href='{{ setting.icon.url }}' rel='shortcut icon' type='image/x-icon'/>
+{% endblock %}
+
+{% block slider %} {% include 'slider.html' %} {% endblock %}
+{% block content %} {% include 'content.html' %}  {% endblock %}
