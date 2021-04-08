@@ -1,0 +1,109 @@
+{% load static %}
+<div class="click-closed"></div>
+<!--/ Form Search Star /-->
+<div class="box-collapse">
+    <div class="title-box-d">
+        <h3 class="title-d">Search Property</h3>
+    </div>
+    <span class="close-box-collapse right-boxed ion-ios-close"></span>
+    <div class="box-collapse-wrap form">
+        <form action="/search/" class="form-a" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-12 mb-2">
+                    <div class="form-group">
+                        <label for="Type">Keyword</label>
+                        <input class="form-control form-control-lg form-control-a" name="query" placeholder="Keyword"
+                               type="text">
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <button class="btn btn-b" type="submit">Search Property</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--/ Form Search End /-->
+{% load mptt_tags %}
+<!--/ Nav Star /-->
+<nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+        <button aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler collapsed"
+                data-target="#navbarDefault" data-toggle="collapse" type="button">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <a class="navbar-brand text-brand" href="/">Hotel<span class="color-b">Reservation</span></a>
+        <button aria-expanded="false" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none"
+                data-target="#navbarTogglerDemo01"
+                data-toggle="collapse" type="button">
+            <span aria-hidden="true" class="fa fa-search"></span>
+        </button>
+        <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Anasayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/hakkimizda">Hakkımızda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">İletişim</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                       href="#"
+                       id="navbarDropdown" role="button">
+                        Kategoriler
+                    </a>
+                    <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+                        {% recursetree category %}
+                        <a class="dropdown-item" href="/category/{{ node.id }}/{{ node.slug }}">{{ node.title}}
+                            {% endrecursetree %}</a>
+
+                    </div>
+                </li>
+                {% if user.id is not None %}
+                <li class="nav-item dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                       href="#"
+                       id="navbarDropdown" role="button">
+                        {{ user.first_name }} {{ user.last_name }}
+                    </a>
+                    <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+
+
+                        <a class="dropdown-item" href="/user">Profilim</a>
+                        <a class="dropdown-item" href="/user/reserve">Rezervasyonlarım</a>
+                        <a class="dropdown-item" href="/logout">Çıkış</a>
+                    </div>
+                </li>
+                {% else %}
+                <li class="nav-item dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                       href="#"
+                       id="navbarDropdown" role="button">
+                        Giriş
+                    </a>
+                    <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+
+                        <a class="dropdown-item" href="/login">Giriş</a>
+                        <a class="dropdown-item" href="/signup">Kaydol</a>
+                    </div>
+                </li>
+
+
+                {% endif %}
+            </ul>
+        </div>
+        <button aria-expanded="false" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-target="#navbarTogglerDemo01"
+                data-toggle="collapse" type="button">
+            <span aria-hidden="true" class="fa fa-search"></span>
+        </button>
+    </div>
+</nav>
+<!--/ Nav End /-->
