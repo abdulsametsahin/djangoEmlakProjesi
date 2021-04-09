@@ -1,0 +1,59 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %} Login | {{ setting.title }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+{% block head %}
+<link href='{{ setting.icon.url }}' rel='shortcut icon' type='image/x-icon'/>
+{% endblock %}
+
+
+{% block content %}
+
+<!--/ Intro Single star /-->
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    <h1 class="title-single">Login</h1>
+                    <span class="color-text-a">
+            </span>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/">Home</a>
+                        </li>
+                        <li aria-current="page" class="breadcrumb-item active">
+                            Login
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8" style="padding-top: 150px;">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}" role="alert">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input id="username" name="username" placeholder="Username" type="text"><br>
+                    <input id="password" name="password" placeholder="password" type="password"><br>
+                    <a class="forgot" href="#">forgot password?</a>
+                    <input type="submit" value="Giriş">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Intro Single End /-->
+{% endblock %}
