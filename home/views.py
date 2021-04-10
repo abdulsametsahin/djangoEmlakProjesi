@@ -71,3 +71,12 @@ def login_view(request):
         'setting': setting,
     }
     return render(request, 'login.html', context)
+def faq(request):
+    category = Category.objects.all()
+    setting = Setting.objects.get(pk=1)
+    faq = FAQ.objects.all()
+    context = {'category': category,
+               'faq': faq,
+               'setting': setting,
+               }
+    return render(request, 'faq.html', context)
