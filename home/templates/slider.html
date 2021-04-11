@@ -1,0 +1,37 @@
+{% load static %}
+<!--/ Carousel Star /-->
+{% if page == 'home' %}
+<div class="intro intro-carousel">
+    <div class="owl-carousel owl-theme" id="carousel">
+        {% for rs in sliderdata %}
+
+        <div class="carousel-item-a intro-item bg-image"
+             style="background-image: url({% static 'img/background.jpg' %})">
+            <div class="overlay overlay-a"></div>
+            <div class="intro-content display-table">
+                <div class="table-cell">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="intro-body">
+                                    <p class="intro-title-top">{{ rs.city }}
+
+                                    <h1 class="intro-title mb-4">
+                                        <span class="color-b">{{ rs.category.title }}</span>
+                                        <br> {{ rs.title }}</h1>
+                                    <p class="intro-subtitle intro-price">
+                                        <a href="/hotel/{{ rs.id }}/{{ rs.slug }}"><span
+                                                class="price-a">REZERVASYON YAP</span></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!--/ Carousel end /-->
+{% endif %}
