@@ -28,6 +28,11 @@ def index(request):
                'specialhotels': specialhotels
                }
     return render(request, 'index.html', context)
+def hakkimizda(request):
+    setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()
+    context = {'setting': setting, 'page': 'hakkimizda', 'category': category}
+    return render(request, 'hakkimizda.html', context)
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
