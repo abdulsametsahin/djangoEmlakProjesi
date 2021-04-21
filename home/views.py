@@ -68,6 +68,24 @@ def hotel_detail(request, id, slug):
         'setting': setting,
     }
     return render(request, 'hotel_detail.html', context)
+def hotel_search(request):
+    if request.method == 'POST':  # check post
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            category = Category.objects.all()
+            query = form.cleaned_data['query']  # get form input data
+            hotel = Hotel.objects.filter(title__icontains=query)
+            setting = Setting.objects.get(pk=1)
+
+            context = {'hotel': hotel,
+                       'category': category,
+
+                       'setting': setting,
+
+                       }
+            return render(request, 'search_hotels.html', context)
+
+    return HttpResponseRedirect('/')
 def logout_view(request):
     logout(request)
 
