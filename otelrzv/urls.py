@@ -8,6 +8,7 @@ from home import views
 urlpatterns = [
     path('', include('home.urls')),
     path('hakkimizda/', views.hakkimizda, name='hakkimizda'),
+    path('hotel/<int:id>/<slug:slug>/', views.hotel_detail, name='hotel_detail'),
 
 ]
 

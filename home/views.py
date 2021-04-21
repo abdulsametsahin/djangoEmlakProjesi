@@ -52,6 +52,22 @@ def contact(request):
     form = ContactForm()
     context = {'setting': setting, 'form': form, 'category': category}
     return render(request, 'contact.html', context)
+def hotel_detail(request, id, slug):
+    setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()
+    rooms = Room.objects.filter(hotel_id=id)
+    image = Images.objects.filter(hotel_id=id)
+    hotel = Hotel.objects.get(pk=id)
+    comments = Comment.objects.filter(hotel_id=id, status='True')
+    context = {
+        'hotel': hotel,
+        'category': category,
+        'image': image,
+        'comments': comments,
+        'rooms': rooms,
+        'setting': setting,
+    }
+    return render(request, 'hotel_detail.html', context)
 def logout_view(request):
     logout(request)
 
