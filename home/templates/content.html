@@ -1,0 +1,347 @@
+{% load static %}
+
+<!--/ Property Star /-->
+<section class="section-property section-t8">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-wrap d-flex justify-content-between">
+                    <div class="title-box">
+                        <h2 class="title-a">Birbirinden Güzel Oteller</h2>
+                    </div>
+                    <div class="title-link">
+                        <a href="property-grid.html">All Property
+                            <span class="ion-ios-arrow-forward"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="owl-carousel owl-theme" id="property-carousel">
+            {% for rs in lasthotels %}
+            <div class="carousel-item-b">
+                <div class="card-box-a card-shadow">
+                    <div class="img-box-a">
+                        <img alt="" class="img-a img-fluid" src="{{ rs.image.url }}"
+                             style="width: 600px; height: 400px;">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="card-overlay-a-content">
+                            <div class="card-header-a">
+                                <h2 class="card-title-a">
+                                    <a href="property-single.html">{{ rs.title }}</a>
+                                </h2>
+                            </div>
+                            <div class="card-body-a">
+                                <div class="price-box d-flex">
+                                    <span class="price-a">REZERVASYON YAP</span>
+                                </div>
+                                <a class="link-a" href="/hotel/{{ rs.id }}/{{ rs.slug }}">Click here to view
+                                    <span class="ion-ios-arrow-forward"></span>
+                                </a>
+                            </div>
+                            <div class="card-footer-a">
+                                <ul class="card-info d-flex justify-content-around">
+                                    <li>
+                                        <h4 class="card-info-title">City</h4>
+                                        <span>{{ rs.city }}
+                      </span>
+                                    </li>
+                                    <li>
+                                        <h4 class="card-info-title">Star</h4>
+                                        <span>{{ rs.star }}</span>
+                                    </li>
+                                    <li>
+                                        <h4 class="card-info-title">Kategori</h4>
+                                        <span>{{ rs.category.title }}</span>
+                                    </li>
+                                    <li>
+                                        <h4 class="card-info-title">Country</h4>
+                                        <span>{{ rs.country }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!--/ Property End /-->
+<section class="agent-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 section-t8">
+                <div class="title-box-d">
+                    <h3 class="title-d">Size Özel Oteller</h3>
+                </div>
+            </div>
+            <div class="row property-grid grid">
+                <div class="col-sm-12">
+
+                </div>
+                {% for rs in randomhotels %}
+                <div class="col-md-4">
+                    <div class="card-box-a card-shadow">
+                        <div class="img-box-a">
+                            <img alt="" class="img-a img-fluid" src="{{ rs.image.url }}"
+                                 style="width: 800px; height: 400px;">
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-overlay-a-content">
+                                <div class="card-header-a">
+                                    <h2 class="card-title-a">
+                                        <a href="/hotel/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                                    </h2>
+                                </div>
+                                <div class="card-body-a">
+                                    <div class="price-box d-flex">
+                                        <span class="price-a">REZERVASYON YAP</span>
+                                    </div>
+                                    <a class="link-a" href="/hotel/{{ rs.id }}/{{ rs.slug }}">Click here to view
+                                        <span class="ion-ios-arrow-forward"></span>
+                                    </a>
+                                </div>
+                                <div class="card-footer-a">
+                                    <ul class="card-info d-flex justify-content-around">
+                                        <li>
+                                            <h4 class="card-info-title">City</h4>
+                                            <span>{{ rs.city }}
+                      </span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Star</h4>
+                                            <span>{{ rs.star }}</span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Kategori</h4>
+                                            <span>{{ rs.category.title }}</span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Country</h4>
+                                            <span>{{ rs.country }}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="agent-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 section-t8">
+                <div class="title-box-d">
+                    <h3 class="title-d">Antalya Otelleri</h3>
+                </div>
+            </div>
+            <div class="row property-grid grid">
+                <div class="col-sm-12">
+
+                </div>
+                {% for rs in specialhotels %}
+                <div class="col-md-4">
+                    <div class="card-box-a card-shadow">
+                        <div class="img-box-a">
+                            <img alt="" class="img-a img-fluid" src="{{ rs.image.url }}"
+                                 style="width: 800px; height: 400px;">
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-overlay-a-content">
+                                <div class="card-header-a">
+                                    <h2 class="card-title-a">
+                                        <a href="/hotel/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                                    </h2>
+                                </div>
+                                <div class="card-body-a">
+                                    <div class="price-box d-flex">
+                                        <span class="price-a">REZERVASYON YAP</span>
+                                    </div>
+                                    <a class="link-a" href="/hotel/{{ rs.id }}/{{ rs.slug }}">Click here to view
+                                        <span class="ion-ios-arrow-forward"></span>
+                                    </a>
+                                </div>
+                                <div class="card-footer-a">
+                                    <ul class="card-info d-flex justify-content-around">
+                                        <li>
+                                            <h4 class="card-info-title">City</h4>
+                                            <span>{{ rs.city }}
+                      </span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Star</h4>
+                                            <span>{{ rs.star }}</span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Kategori</h4>
+                                            <span>{{ rs.category.title }}</span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Country</h4>
+                                            <span>{{ rs.country }}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="agent-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 section-t8">
+                <div class="title-box-d">
+                    <h3 class="title-d">5 Yıldızlı Oteller</h3>
+                </div>
+            </div>
+            <div class="row property-grid grid">
+                <div class="col-sm-12">
+
+                </div>
+                {% for rs in fivestarhotels %}
+                <div class="col-md-4">
+                    <div class="card-box-a card-shadow">
+                        <div class="img-box-a">
+                            <img alt="" class="img-a img-fluid" src="{{ rs.image.url }}"
+                                 style="width: 800px; height: 400px;">
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-overlay-a-content">
+                                <div class="card-header-a">
+                                    <h2 class="card-title-a">
+                                        <a href="/hotel/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                                    </h2>
+                                </div>
+                                <div class="card-body-a">
+                                    <div class="price-box d-flex">
+                                        <span class="price-a">REZERVASYON YAP</span>
+                                    </div>
+                                    <a class="link-a" href="/hotel/{{ rs.id }}/{{ rs.slug }}">Click here to view
+                                        <span class="ion-ios-arrow-forward"></span>
+                                    </a>
+                                </div>
+                                <div class="card-footer-a">
+                                    <ul class="card-info d-flex justify-content-around">
+                                        <li>
+                                            <h4 class="card-info-title">City</h4>
+                                            <span>{{ rs.city }}
+                      </span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Star</h4>
+                                            <span>{{ rs.star }}</span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Kategori</h4>
+                                            <span>{{ rs.category.title }}</span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Country</h4>
+                                            <span>{{ rs.country }}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--/ footer Star /-->
+<section class="section-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-4">
+                <div class="widget-a">
+                    <div class="w-header-a">
+                        <h3 class="w-title-a text-brand">HotelReservation</h3>
+                    </div>
+                    <div class="w-body-a">
+                        <p class="w-text-a color-text-a">
+                            {{ setting.company }}
+                        </p>
+                    </div>
+                    <div class="w-footer-a">
+                        <ul class="list-unstyled">
+                            <li class="color-a">
+                                <span class="color-text-a">Phone .</span> {{ setting.phone }}
+                            </li>
+                            <li class="color-a">
+                                <span class="color-text-a">Email .</span> {{ setting.email }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 section-md-t3">
+                <div class="widget-a">
+                    <div class="w-header-a">
+                        <h3 class="w-title-a text-brand">The Company</h3>
+                    </div>
+                    <div class="w-body-a">
+                        <div class="w-body-a">
+                            <ul class="list-unstyled">
+                                <li class="item-list-a">
+                                    <i class="fa fa-angle-right"></i> <a href="/">Home</a>
+                                </li>
+                                <li class="item-list-a">
+                                    <i class="fa fa-angle-right"></i> <a href="/hakkimizda">About Us</a>
+                                </li>
+                                <li class="item-list-a">
+                                    <i class="fa fa-angle-right"></i> <a href="/faq">FAQ</a>
+                                </li>
+                                <li class="item-list-a">
+                                    <i class="fa fa-angle-right"></i> <a href="/references">References</a>
+                                </li>
+                                <li class="item-list-a">
+                                    <i class="fa fa-angle-right"></i> <a href="/contact">Contact Us</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% load mptt_tags %}
+            <div class="col-sm-12 col-md-4 section-md-t3">
+                <div class="widget-a">
+                    <div class="w-header-a">
+                        <h3 class="w-title-a text-brand">Kategoriler</h3>
+                    </div>
+                    <div class="w-body-a">
+                        <ul class="list-unstyled">
+                            {% recursetree category %}
+                            <li class="item-list-a">
+                                <i class="fa fa-angle-right"></i> <a href="/category/{{ node.id }}/{{ node.slug }}">{{
+                                node.title}}</a>
+                            </li>
+                            {% endrecursetree %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
