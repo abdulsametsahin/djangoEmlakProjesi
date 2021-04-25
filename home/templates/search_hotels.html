@@ -1,0 +1,112 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %} Arama Sonuçları | {{ setting.title }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+{% block head %}
+<link href='{{ setting.icon.url }}' rel='shortcut icon' type='image/x-icon'/>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <!--/ Intro Single star /-->
+    <section class="intro-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <div class="title-single-box">
+                        <h1 class="title-single">{{search}}</h1>
+                        <span class="color-text-a">Arama</span>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="#">Home</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#">Arama</a>
+                            </li>
+                            <li aria-current="page" class="breadcrumb-item active">
+                                {{search}}
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Intro Single End /-->
+
+    <!--/ Agent Single Star /-->
+    <section class="agent-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-t8">
+                    <div class="title-box-d">
+                        <h3 class="title-d">{{search}}</h3>
+                    </div>
+                </div>
+                <div class="row property-grid grid">
+                    <div class="col-sm-12">
+
+                    </div>
+                    {% for rs in hotel %}
+                    <div class="col-md-4">
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a">
+                                <img alt="" class="img-a img-fluid" src="{{ rs.image.url }}"
+                                     style="width: 800px; height: 400px;">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="/hotel/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            <span class="price-a">REZERVASYON YAP</span>
+                                        </div>
+                                        <a class="link-a" href="/hotel/{{ rs.id }}/{{ rs.slug }}">Click here to view
+                                            <span class="ion-ios-arrow-forward"></span>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <li>
+                                                <h4 class="card-info-title">City</h4>
+                                                <span>{{ rs.city }}
+                      </span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Star</h4>
+                                                <span>{{ rs.star }}</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Kategori</h4>
+                                                <span>{{ rs.category.title }}</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Country</h4>
+                                                <span>{{ rs.country }}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>  <!--/ Agent Single End /-->
+{% endblock %}
