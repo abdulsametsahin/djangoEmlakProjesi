@@ -28,11 +28,22 @@ def index(request):
                'specialhotels': specialhotels
                }
     return render(request, 'index.html', context)
+
+
 def hakkimizda(request):
     setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
     context = {'setting': setting, 'page': 'hakkimizda', 'category': category}
     return render(request, 'hakkimizda.html', context)
+
+
+def references(request):
+    setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()
+    context = {'setting': setting, 'page': 'referans', 'category': category}
+    return render(request, 'references.html', context)
+
+
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -52,6 +63,24 @@ def contact(request):
     form = ContactForm()
     context = {'setting': setting, 'form': form, 'category': category}
     return render(request, 'contact.html', context)
+
+
+def category_hotels(request, id, slug):
+    hotels = Hotel.objects.filter(category_id=id)
+    setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()
+    categorydata = Category.objects.get(pk=id)
+
+    context = {'hotels': hotels,
+               'category': category,
+               'slug': slug,
+               'setting': setting,
+               'categorydata': categorydata,
+
+               }
+    return render(request, 'hotels.html', context)
+
+
 def hotel_detail(request, id, slug):
     setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
@@ -68,6 +97,8 @@ def hotel_detail(request, id, slug):
         'setting': setting,
     }
     return render(request, 'hotel_detail.html', context)
+
+
 def hotel_search(request):
     if request.method == 'POST':  # check post
         form = SearchForm(request.POST)
@@ -86,6 +117,8 @@ def hotel_search(request):
             return render(request, 'search_hotels.html', context)
 
     return HttpResponseRedirect('/')
+
+
 def logout_view(request):
     logout(request)
 
@@ -110,6 +143,8 @@ def login_view(request):
         'setting': setting,
     }
     return render(request, 'login.html', context)
+
+
 def signup_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -137,6 +172,8 @@ def signup_view(request):
         'setting': setting,
     }
     return render(request, 'signup.html', context)
+
+
 def faq(request):
     category = Category.objects.all()
     setting = Setting.objects.get(pk=1)
