@@ -51,3 +51,18 @@ class CategoryAdmin2(DraggableMPTTAdmin):
         return instance.hotels_cumulative_count
 
     related_hotels_cumulative_count.short_description = 'Related hotels (in tree)'
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['subject', 'comment', 'hotel', 'user', 'status']
+    list_filter = ['status']
+
+
+class RoomAdmin(admin.ModelAdmin):
+    list_display = ['title', 'hotel', 'price', 'image_tag', 'status']
+    list_filter = ['status', 'hotel']
+
+
+admin.site.register(Category, CategoryAdmin2)
+admin.site.register(Hotel, HotelAdmin)
+admin.site.register(Images, ImagesAdmin)
+admin.site.register(Comment, CommentAdmin)
+admin.site.register(Room, RoomAdmin)
