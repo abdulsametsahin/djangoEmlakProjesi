@@ -12,3 +12,7 @@ class HotelAdmin(admin.ModelAdmin):
     list_filter = ['status', 'category']
     inlines = [HotelImageInline]
     prepopulated_fields = {'slug': ('title',)}
+
+class ImagesAdmin(admin.ModelAdmin):
+    list_display = ['title', 'hotel', 'image_tag']
+    readonly_fields = ('image_tag',)
