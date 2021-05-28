@@ -1,3 +1,10 @@
+from django.contrib import admin
+# Register your models here.
+from mptt.admin import MPTTModelAdmin, DraggableMPTTAdmin
+
+from hotel.models import Category, Hotel, Images, Comment, Room
+
+
 class HotelImageInline(admin.TabularInline):
     model = Images
     extra = 5
@@ -6,6 +13,8 @@ class HotelImageInline(admin.TabularInline):
 class CategoryAdmin(MPTTModelAdmin):
     list_display = ['title', 'status', ]
     list_filter = ['status']
+
+
 class HotelAdmin(admin.ModelAdmin):
     list_display = ['title', 'category', 'star', 'image_tag', 'city', 'status']
     readonly_fields = ('image_tag',)
@@ -13,9 +22,12 @@ class HotelAdmin(admin.ModelAdmin):
     inlines = [HotelImageInline]
     prepopulated_fields = {'slug': ('title',)}
 
+
 class ImagesAdmin(admin.ModelAdmin):
     list_display = ['title', 'hotel', 'image_tag']
     readonly_fields = ('image_tag',)
+
+
 class CategoryAdmin2(DraggableMPTTAdmin):
     mptt_indent_field = "title"
     list_display = ('tree_actions', 'indented_title',
@@ -51,6 +63,8 @@ class CategoryAdmin2(DraggableMPTTAdmin):
         return instance.hotels_cumulative_count
 
     related_hotels_cumulative_count.short_description = 'Related hotels (in tree)'
+
+
 class CommentAdmin(admin.ModelAdmin):
     list_display = ['subject', 'comment', 'hotel', 'user', 'status']
     list_filter = ['status']
