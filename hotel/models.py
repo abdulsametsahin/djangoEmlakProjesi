@@ -35,3 +35,35 @@ class Category(MPTTModel):
 
     def get_absolute_url(self):
         return reverse('category_detail', kwargs={'slug': self.slug})
+class Hotel(models.Model):
+    STATUS = (
+        ('True', 'Evet'),
+        ('False', 'Hayır'),
+    )
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    title = models.CharField(max_length=150)
+    keywords = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
+    image = models.ImageField(blank=True, upload_to='images/')
+    status = models.CharField(max_length=10, choices=STATUS)
+    star = models.CharField(max_length=10)
+    address = RichTextUploadingField()
+    phone = models.CharField(max_length=30)
+    email = models.CharField(max_length=50)
+    city = models.CharField(max_length=25)
+    country = models.CharField(max_length=25)
+    location = models.CharField(max_length=100)
+    slug = models.SlugField(null=False, unique=True)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    def image_tag(self):
+        return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+
+    image_tag.short_description = 'Image'
+
+    def get_absolute_url(self):
+        return reverse('hotel_detail', kwargs={'slug': self.slug})
