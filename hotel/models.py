@@ -67,3 +67,40 @@ class Hotel(models.Model):
 
     def get_absolute_url(self):
         return reverse('hotel_detail', kwargs={'slug': self.slug})
+class Images(models.Model):
+    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50, blank=True)
+    image = models.ImageField(blank=True, upload_to='images/')
+
+    def __str__(self):
+        return self.title
+
+    def image_tag(self):
+        return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+
+    image_tag.short_description = 'Image'
+
+
+class Room(models.Model):
+    STATUS = (
+        ('True', 'Evet'),
+        ('False', 'Hayır'),
+    )
+    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
+    title = models.CharField(max_length=150)
+    keywords = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
+    number = models.IntegerField()
+    image = models.ImageField(blank=True, upload_to='images/')
+    price = models.FloatField()
+    status = models.CharField(max_length=10, choices=STATUS)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    def image_tag(self):
+        return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+
+    image_tag.short_description = 'Image'
