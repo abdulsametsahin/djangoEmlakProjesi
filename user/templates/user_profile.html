@@ -1,0 +1,124 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %} Profilim | {{ setting.title }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+{% block head %}
+<link href='{{ setting.icon.url }}' rel='shortcut icon' type='image/x-icon'/>
+
+{% endblock %}
+
+
+{% block content %}
+
+<!--/ Intro Single star /-->
+<section class="intro-single">
+    <div class="container">
+        <div class="row" style="display:flex; align-items:center">
+            <div class="col-md-12 col-lg-4">
+                <h3 class="title-d">{{ user.first_name }} {{ user.last_name }}</h3>
+            </div>
+            <div class="col-md-12 col-lg-8">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/user">Profilim</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="/user/update">Güncelle</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="/user/password">Şifre</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="/user/reserve">Rezervasyonlarım</a>
+                        </li>
+                        <li aria-current="page" class="breadcrumb-item active">
+                            <a href="/logout">Çıkış</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Intro Single End /-->
+
+<!--/ Agent Single Star /-->
+<section class="agent-single">
+    <div class="container">
+        <div class="card p-5">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    {% for message in messages %}
+                    <div class="alert alert-{{message.tags}}" role="alert">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="agent-avatar-box">
+                                <img alt="" class="agent-avatar img-fluid" src="{{ profile.image.url }}">
+                            </div>
+                        </div>
+                        <div class="col-md-5 section-md-t3">
+                            <div class="agent-info-box">
+                                <div class="agent-content mb-3">
+
+                                    <div class="info-agents color-a">
+                                        <p>
+                                            <strong>Phone: </strong>
+                                            <span class="color-text-a"> {{ profile.phone}} </span>
+                                        </p>
+                                        <p>
+                                            <strong>Mobile: </strong>
+                                            <span class="color-text-a"> {{ profile.address}}</span>
+                                        </p>
+                                        <p>
+                                            <strong>City: </strong>
+                                            <span class="color-text-a"> {{ profile.city}}</span>
+                                        </p>
+                                        <p>
+                                            <strong>Country: </strong>
+                                            <span class="color-text-a"> {{ profile.country}}</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class="socials-footer">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a class="link-one" href="{{ setting.facebook }}">
+                                                <i aria-hidden="true" class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="link-one" href="{{ setting.twitter }}">
+                                                <i aria-hidden="true" class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="link-one" href="{{ setting.instagram }}">
+                                                <i aria-hidden="true" class="fa fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="link-one" href="{{ setting.youtube }}">
+                                                <i aria-hidden="true" class="fa fa-youtube"></i>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Agent Single End /-->
+{% endblock %}
