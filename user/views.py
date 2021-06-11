@@ -50,6 +50,7 @@ def user_update(request):
         }
         return render(request, 'user_update.html', context)
 
+
 @login_required(login_url='/login')  # Check login
 def change_password(request):
     if request.method == 'POST':
@@ -67,3 +68,27 @@ def change_password(request):
         setting = Setting.objects.get(pk=1)
         form = PasswordChangeForm(request.user)
         return render(request, 'change_password.html', {'form': form, 'category': category, 'setting': setting,
+                                                        })
+
+
+@login_required(login_url="/login")
+def reserve(request):
+    category = Category.objects.all()
+    setting = Setting.objects.get(pk=1)
+    current_user = request.user
+    reserve = Reserve.objects.filter(user_id=current_user.id)
+
+    context = {
+        'category': category,
+        'reserve': reserve,
+        'setting': setting,
+    }
+    return render(request, 'user_reserve.html', context)
+
+
+@login_required(login_url="/login")
+def reservedelete(request, id):
+    current_user = request.user
+    Reserve.objects.filter(id=id, user_id=current_user.id).delete()
+    messages.success(request, 'Rezervasyon İptal Edildi')
+    return HttpResponseRedirect('/user/reserve')
