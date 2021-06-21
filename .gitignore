@@ -1,0 +1,6 @@
+uploads/*
+.idea
+venv
+TEMPS
+db.sqlite3
+__pycache__
