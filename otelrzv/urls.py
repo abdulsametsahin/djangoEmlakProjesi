@@ -10,6 +10,8 @@ urlpatterns = [
     path('hakkimizda/', views.hakkimizda, name='hakkimizda'),
     path('home/', include('home.urls')),
     path('hotel/', include('hotel.urls')),
+    path('user/', include('user.urls')),
+    path('reserve/', include('reserve.urls')),
     path('hotel/<int:id>/<slug:slug>/', views.hotel_detail, name='hotel_detail'),
 
 ]
