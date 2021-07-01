@@ -1,9 +1,17 @@
 from django import forms
-from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.forms import TextInput, EmailInput, Select, FileInput
 
 from user.models import UserProfile
+
+
+class FormChangePassword(PasswordChangeForm):
+
+    def __init__(self, *args, **kwargs):
+        super(FormChangePassword, self).__init__(*args, **kwargs)
+        for field in ('old_password', 'new_password1', 'new_password2'):
+            self.fields[field].widget.attrs = {'class': 'form-control'}
 
 
 class UserUpdateForm(UserChangeForm):

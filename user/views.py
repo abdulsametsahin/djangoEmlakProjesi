@@ -9,7 +9,7 @@ from django.shortcuts import render
 from home.models import Setting
 from hotel.models import Category
 from reserve.models import Reserve
-from user.forms import UserUpdateForm, ProfileUpdateForm
+from user.forms import UserUpdateForm, ProfileUpdateForm, FormChangePassword
 from user.models import UserProfile
 
 
@@ -66,7 +66,7 @@ def change_password(request):
     else:
         category = Category.objects.all()
         setting = Setting.objects.get(pk=1)
-        form = PasswordChangeForm(request.user)
+        form = FormChangePassword(request.user)
         return render(request, 'change_password.html', {'form': form, 'category': category, 'setting': setting,
                                                         })
 
