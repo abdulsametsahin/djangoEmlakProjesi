@@ -53,11 +53,15 @@
                 <form enctype="multipart/form-data" method="POST">
                     {% csrf_token %}
                     <fieldset class="form-group">
-                        {{ user_form.as_p }}
-                        {{ profile_form.as_p }}
+                        <div class="card p-5" style="margin-bottom:100px">
+                            {{ user_form.as_p }}
+                        </div>
+                        <div class="card p-5">
+                            {{ profile_form.as_p }}
+                        </div>
                     </fieldset>
                     <div class="form-group">
-                        <button class="btn btn-outline-info" type="submit">Update</button>
+                        <button class="btn btn-primary" type="submit">Update</button>
                     </div>
                 </form>
             </div>

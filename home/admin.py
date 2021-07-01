@@ -6,7 +6,7 @@ from user.models import UserProfile
 
 
 class ContactFormMessageAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'subject', 'message', 'note', 'status']
+    list_display = ['status', 'name', 'email']
     list_filter = ['status']
 
 

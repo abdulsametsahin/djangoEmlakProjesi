@@ -1,9 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
 
 # Create your views here.
-from hotel.models import Hotel
+from home.models import Setting
+from hotel.models import Hotel, Room
 from reserve.models import ReserveForm, Reserve
 
 
@@ -11,8 +13,9 @@ def index(request):
     return HttpResponse("Reserve Page")
 
 
+
 @login_required(login_url="/login")
-def sendreserve(request, id, hotel_id):
+def sendreserve(request,id,hotel_id):
     url = request.META.get('HTTP_REFERER')  # get last url
     hotel = Hotel.objects.get(id=hotel_id)
     # return HttpResponse(url)
