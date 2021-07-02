@@ -6,7 +6,7 @@
         {% for rs in sliderdata %}
 
         <div class="carousel-item-a intro-item bg-image"
-             style="background-image: url({% static 'img/background.jpg' %})">
+             style="background-image: url({{rs.image.url}})">
             <div class="overlay overlay-a"></div>
             <div class="intro-content display-table">
                 <div class="table-cell">

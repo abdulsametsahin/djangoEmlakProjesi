@@ -23,9 +23,9 @@ class HotelAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 
-# class ImagesAdmin(admin.ModelAdmin):
-#     list_display = ['title', 'hotel', 'image_tag']
-#     readonly_fields = ('image_tag',)
+class ImagesAdmin(admin.ModelAdmin):
+    list_display = ['title', 'hotel', 'image_tag']
+    readonly_fields = ('image_tag',)
 
 
 class CategoryAdmin2(DraggableMPTTAdmin):
@@ -77,6 +77,6 @@ class RoomAdmin(admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin2)
 admin.site.register(Hotel, HotelAdmin)
-# admin.site.register(Images, ImagesAdmin)
+admin.site.register(Images, ImagesAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Room, RoomAdmin)
