@@ -100,11 +100,11 @@ def hotel_detail(request, id, slug):
 
 
 def hotel_search(request):
-    if request.method == 'POST':  # check post
+    if request.method == 'POST':
         form = SearchForm(request.POST)
         if form.is_valid():
             category = Category.objects.all()
-            query = form.cleaned_data['query']  # get form input data
+            query = form.cleaned_data['query']
             hotel = Hotel.objects.filter(title__icontains=query)
             setting = Setting.objects.get(pk=1)
 
