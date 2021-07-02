@@ -11,7 +11,7 @@ class ContactFormMessageAdmin(admin.ModelAdmin):
 
 
 class FAQAdmin(admin.ModelAdmin):
-    list_display = ['question', 'answer', 'status']
+    list_display = ['question', 'status']
     list_filter = ['status']
 
 

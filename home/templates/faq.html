@@ -44,19 +44,6 @@
                 <div class="title-single-box">
                     <h1 class="title-single">FAQ</h1>
                     <span class="color-text-a">
-                <table id="customers">
-  <tr>
-    <th>Question</th>
-    <th>Answer</th>
-  </tr>
-        {% for rs in faq %}
-  <tr>
-    <td><h5>{{ rs.question }}</h5></td>
-    <td>{{ rs.answer | safe }}</td>
-  </tr>
-        {% endfor %}
-
-</table>
             </span>
                 </div>
             </div>
@@ -73,6 +60,18 @@
                 </nav>
             </div>
         </div>
+    </div>
+</section>
+<section>
+    <div class="container" style="min-height: 800px">
+        {% for rs in faq %}
+            <div class="card p-4" style="margin-bottom: 20px">
+                <h3>{{ rs.question }}</h3>
+                <p>
+                    {{ rs.answer | safe }}
+                </p>
+            </div>
+        {% endfor %}
     </div>
 </section>
 <!--/ Intro Single End /-->

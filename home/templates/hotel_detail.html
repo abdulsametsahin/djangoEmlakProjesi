@@ -61,109 +61,48 @@
                                     <div class="property-summary">
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <div class="title-box-d section-t4">
+                                                <div class="title-box-d">
                                                     <h3 class="title-d">Otel Bilgileri</h3>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="summary-list">
                                             <ul class="list">
-                                                <li class="d-flex justify-content-between">
+                                                <li class="d-flex justify-content-between" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
                                                     <strong>Telefon: </strong>
                                                     <span>{{hotel.phone}}</span>
                                                 </li>
-                                                <li class="d-flex justify-content-between">
+                                                <li class="d-flex justify-content-between" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
                                                     <strong>Adres:</strong>
-                                                    <span>{{hotel.location}}</span>
+                                                    <span style="text-align: right">{{hotel.location}}</span>
                                                 </li>
-                                                <li class="d-flex justify-content-between">
+                                                <li class="d-flex justify-content-between" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
                                                     <strong>Kategori:</strong>
-                                                    <span>{{hotel.category.title}}</span>
+                                                    <span style="text-align: right">{{hotel.category.title}}</span>
                                                 </li>
-                                                <li class="d-flex justify-content-between">
+                                                <li class="d-flex justify-content-between" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
                                                     <strong>Şehir:</strong>
-                                                    <span>{{hotel.city}}</span>
+                                                    <span style="text-align: right">{{hotel.city}}</span>
                                                 </li>
-                                                <li class="d-flex justify-content-between">
+                                                <li class="d-flex justify-content-between" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
                                                     <strong>Konum:</strong>
-                                                    <span>{{hotel.location}}
-                      </span>
+                                                    <span style="text-align: right">{{hotel.location}}</span>
                                                 </li>
-                                                <li class="d-flex justify-content-between">
+                                                <li class="d-flex justify-content-between" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
                                                     <strong>Ülke:</strong>
-                                                    <span>{{hotel.country}}</span>
+                                                    <span style="text-align: right">{{hotel.country}}</span>
                                                 </li>
-                                                <li class="d-flex justify-content-between">
+                                                <li class="d-flex justify-content-between" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
                                                     <strong>Website:</strong>
-                                                    <span><a href="{{hotel.email}}">Web Siteyi Gör</a></span>
+                                                    <span style="text-align: right"><a href="{{hotel.email}}">Web Siteyi Gör</a></span>
                                                 </li>
-                                                <li class="d-flex justify-content-between">
+                                                <li class="d-flex justify-content-between" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
                                                     <strong>Yıldız:</strong>
-                                                    <span>{{hotel.star}}</span>
+                                                    <span style="text-align: right">{{hotel.star}}</span>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="title-box-d">
-                                        <h3 class="title-d">Yorumlar</h3>
-                                    </div>
-                                    <div class="box-comments">
-                                        <ul class="list-comments">
-                                            {% for rs in comments %}
-                                            <li>
-                                                <div class="comment-avatar">
-                                                    <img alt="" src="{% static 'img/user.png' %}">
-                                                </div>
-                                                <div class="comment-details">
-                                                    <h4 class="comment-author">{{ rs.user.first_name }} {{
-                                                        rs.user.last_name }}</h4>
-                                                    <span>{{ rs.create_at }}</span>
-                                                    <p class="comment-description">
-                                                        {{ rs.comment }}
-                                                    </p>
-
-                                                </div>
-                                            </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                    <div class="form-comments">
-                                        <div class="title-box-d">
-                                            <h3 class="title-d"> Yorum Yap</h3>
-                                        </div>
-                                        <form action="/hotel/addcomment/{{ hotel.id }}" class="form-a" method="post">
-                                            {% csrf_token %}
-                                            <div class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <div class="form-group">
-                                                        <label for="inputName">Subject</label>
-                                                        <input class="form-control form-control-lg form-control-a"
-                                                               id="subject"
-                                                               name="subject" placeholder="Subject" required
-                                                               type="text">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 mb-3">
-                                                    <div class="form-group">
-                                                        <label for="comment">Enter message</label>
-                                                        <textarea class="form-control" cols="45"
-                                                                  id="comment" name="comment" placeholder="Comment *"
-                                                                  required rows="8"></textarea>
-                                                    </div>
-                                                </div>
-                                                {% if user.id is not None %}
-                                                <div class="col-md-12">
-                                                    <button class="btn btn-a" type="submit">Send Message</button>
-                                                </div>
-                                                {% else %}
-                                                <div class="col-md-12">
-                                                    <a class="btn btn-a" href="/login">Giriş Yap</a>
-                                                </div>
-                                                {% endif %}
-                                            </div>
-                                        </form>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
@@ -183,66 +122,131 @@
                             </p>
 
                         </div>
-
-                        <div class="amenities-list color-text-a">
-                            <section class="agent-single">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-12 section-t8">
-                                            <div class="title-box-d">
-                                                <h3 class="title-d">Odalar</h3>
-                                            </div>
-                                        </div>
-                                        <div class="row property-grid grid">
-                                            <div class="col-sm-12">
-                                                {% if messages %}
-                                                {% for message in messages %}
-                                                <div class="alert alert-{{message.tags}}" role="alert">
-                                                    {{ message }}
-                                                </div>
-                                                {% endfor %}
-                                                {% endif %}
-                                            </div>
-
-
-                                            <table style="border-color: #1b1e21">
-                                                <thead>
-                                                <tr>
-                                                    <td>Room</td>
-
-                                                    <td>Check In</td>
-                                                    <td>Check Out</td>
-                                                    <td>Rezervasyon Yap</td>
-                                                </tr>
-                                                </thead>
-                                                {% for rs in rooms %}
-
-                                                <tbody>
-                                                <td><img alt="" class="img-d img-fluid"
-                                                         src="{{ rs.image.url }}" style="height: 300px; width: 300px;">{{ rs.title }} <b>${{ rs.price
-                                                    }}</b></td>
-                                                <form action="/reserve/sendreserve/{{ rs.id }}/{{ rs.hotel.id }}"
-                                                      method="post" name="reserveform">
-                                                    {% csrf_token %}
-                                                    <td><input id="checkin" name="checkin" type="date"></td>
-                                                    <td><input id="checkout" name="checkout" type="date"></td>
-                                                    <td>
-                                                        <button class="btn-primary" id="submit" type="submit"
-                                                                value="SEND">Rezervasyon Yap
-                                                        </button>
-                                                    </td>
-                                                </form>
-                                                </tbody>
-
-                                                {% endfor %}
-                                            </table>
-
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="amenities-list color-text-a">
+                <section class="agent-single">
+                    <div class="container">
+                        <div class="row" style="width: 100%">
+                            <div class="col-md-12 section-t8">
+                                <div class="title-box-d">
+                                    <h3 class="title-d">Odalar</h3>
+                                </div>
+                            </div>
+                            <div class="row property-grid grid" style="width: 100%">
+                                <div class="col-sm-12">
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                    <div class="alert alert-{{message.tags}}" role="alert">
+                                        {{ message }}
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+
+
+                                <table style="border-color: #1b1e21; width: 100%">
+                                    {% for rs in rooms %}
+
+                                    <tr>
+                                        <td>
+                                            <br><br>
+                                            {{ rs.title }} <b>${{ rs.price }}</b> <br> <br> <br>
+                                            <img alt="" class="img-d img-fluid"
+                                                 src="{{ rs.image.url }}" style="height: 300px; width: 300px; object-fit:cover">
+
+                                        </td>
+                                        <form action="/reserve/sendreserve/{{ rs.id }}/{{ rs.hotel.id }}"
+                                              method="post" name="reserveform">
+                                            {% csrf_token %}
+                                            <td><input id="checkin" class="form-control" name="checkin" type="date">
+                                            </td>
+                                            <td><input id="checkout" class="form-control" name="checkout" type="date">
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-primary" id="submit" type="submit"
+                                                        value="SEND">Rezervasyon Yap
+                                                </button>
+                                            </td>
+                                        </form>
+                                    </tr>
+
+                                    {% endfor %}
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <br><br><br><br><br>
+                <div class="title-box-d">
+                    <h3 class="title-d">Yorumlar</h3>
+                </div>
+                <div class="box-comments">
+                    <ul class="list-comments">
+                        {% for rs in comments %}
+                        <li>
+                            <div class="comment-avatar">
+                                <img alt="" src="{% static 'img/user.png' %}">
+                            </div>
+                            <div class="comment-details">
+                                <h4 class="comment-author">{{ rs.user.first_name }} {{ rs.user.last_name }}</h4>
+                                <span>{{ rs.create_at }}</span>
+                                <p class="comment-description">
+                                    {{ rs.comment }}
+                                </p>
+
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="form-comments">
+                    <div class="title-box-d">
+                        <h3 class="title-d"> Yorum Yap</h3>
+                    </div>
+                    <form action="/hotel/addcomment/{{ hotel.id }}" class="form-a" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label>Subject</label>
+                                    <input class="form-control form-control-lg form-control-a"
+                                           id="subject"
+                                           name="subject" placeholder="Subject" required
+                                           type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="form-group">
+                                    <label for="comment">Enter message</label>
+                                    <textarea class="form-control" cols="45"
+                                              id="comment" name="comment" placeholder="Comment *"
+                                              required rows="8"></textarea>
+                                </div>
+                            </div>
+                            {% if user.id is not None %}
+                            <div class="col-md-12">
+                                <button class="btn btn-a" type="submit">Send Message</button>
+                            </div>
+                            {% else %}
+                            <div class="col-md-12">
+                                <a class="btn btn-a" href="/login">Giriş Yap</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!--/ Property Single End /-->

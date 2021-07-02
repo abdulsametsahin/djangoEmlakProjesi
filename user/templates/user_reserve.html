@@ -11,68 +11,73 @@
 
 {% block content %}
 
-<div class="col-md-12 section-t8">
-    <div class="title-box-d">
-        <h3 class="title-d">Rezervasyonlarım</h3>
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-{{message.tags}}" role="alert">
-            {{ message }}
+<div class="container">
+    <br><br><br>
+    <div class="row section-t8">
+        <div class="col-md-4">
+            <div class="title-box-d">
+                <h3 class="title-d">Rezervasyonlarım</h3>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}" role="alert">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
         </div>
-        {% endfor %}
-        {% endif %}
+        <div class="col-sm-8">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/user">Profilim</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="/user/reserve">Rezervasyonlarım</a>
+                    </li>
+                    <li aria-current="page" class="breadcrumb-item active">
+                        <a href="/logout">Çıkış</a>
+                    </li>
+                </ol>
+            </nav>
+        </div>
     </div>
-</div>
-<div class="row property-grid grid">
-    <div class="col-sm-12" style="padding-right: 50px;">
-        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="/user">Profilim</a>
+    <div class="row property-grid grid">
+
+
+
+        <div class="box-comments">
+            <ul class="list-comments">
+                {% for rs in reserve %}
+                <li>
+                    <div class="comment-avatar">
+                        <img alt="" src="{{ rs.hotel.image.url }}" style="height: 400px; width: 400px;">
+                    </div>
+                    <div class="comment-details">
+                        <h4 class="comment-author"><a href="/hotel/{{ rs.hotel.id }}/{{ rs.hotel.slug }}">{{ rs.hotel.title }}</a></h4>
+                        <p class="comment-description">
+                            <b>REZERVASYON BİLGİLERİ:</b>
+                        </p>
+                        <span>ADI SOYADI: {{ user.first_name }} {{ user.last_name }}</span>
+                        <span>CHECK-IN: {{ rs.checkin }}</span>
+                        <span>CHECK-OUT: {{ rs.checkout }}</span>
+                        <p class="comment-description">
+                            ODA TİPİ: {{ rs.room.title }}
+                        </p>
+                        <p class="comment-description">
+                            REZERVASYON DURUMU: {{ rs.status }}
+                        </p>
+                        <a class="btn btn-b" href="/user/reservedelete/{{ rs.id }}"
+                           onclick="return confirm('İptal Ediliyor... Emin misiniz?')">İPTAL ET</a>
+
+
+                    </div>
                 </li>
-                <li class="breadcrumb-item">
-                    <a href="/user/reserve">Rezervasyonlarım</a>
-                </li>
-                <li aria-current="page" class="breadcrumb-item active">
-                    <a href="/logout">Çıkış</a>
-                </li>
-            </ol>
-        </nav>
+                {% endfor %}
+            </ul>
+        </div>
+
+
     </div>
-
-
-    <div class="box-comments" style="padding-left: 100px;">
-        <ul class="list-comments">
-            {% for rs in reserve %}
-            <li>
-                <div class="comment-avatar">
-                    <img alt="" src="{{ rs.hotel.image.url }}" style="height: 400px; width: 400px;">
-                </div>
-                <div class="comment-details">
-                    <h4 class="comment-author"><a href="/hotel/{{ rs.hotel.id }}/{{ rs.hotel.slug }}">{{ rs.hotel.title
-                        }}</a></h4>
-                    <p class="comment-description">
-                        <b>REZERVASYON BİLGİLERİ:</b>
-                    </p>
-                    <span>ADI SOYADI: {{ user.first_name }} {{ user.last_name }}</span>
-                    <span>CHECK-IN: {{ rs.checkin }}</span>
-                    <span>CHECK-OUT: {{ rs.checkout }}</span>
-                    <p class="comment-description">
-                        ODA TİPİ: {{ rs.room.title }}
-                    </p>
-                    <p class="comment-description">
-                        REZERVASYON DURUMU: {{ rs.status }}
-                    </p>
-                    <a class="btn btn-b" href="/user/reservedelete/{{ rs.id }}"
-                       onclick="return confirm('İptal Ediliyor... Emin misiniz?')">İPTAL ET</a>
-
-
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
-
-
 </div>
 {% endblock %}
